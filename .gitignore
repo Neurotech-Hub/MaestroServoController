@@ -1,0 +1,31 @@
+# Arduino IDE build files
+build/
+*.hex
+*.elf
+*.eep
+
+# Arduino IDE metadata
+.vscode/
+.vs/
+*.swp
+*~
+
+# Dependencies (if using library manager)
+libraries/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Debug files
+*.log
+debug.txt
+
+# Backup files
+*.bak
+*.backup 
