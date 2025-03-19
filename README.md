@@ -6,7 +6,7 @@ ESP32-S3 based servo controller using Pololu's Maestro board. Control up to 24 s
 
 ```mermaid
 graph LR
-    A[ESP32-S3<br>TX:GPIO17] --> B[Level<br>Shifter]
+    A[ESP32-S3<br>TX:Serial1] --> B[Level<br>Shifter]
     B --> C[Pololu<br>Maestro RX]
 ```
 
