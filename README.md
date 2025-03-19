@@ -1,26 +1,37 @@
 # Maestro Servo Controller
 
-This Arduino project demonstrates how to smoothly control a servo using a Pololu Maestro servo controller.
+ESP32-S3 based servo controller using Pololu's Maestro board. Control up to 24 servos with adjustable speed and acceleration.
 
-## Hardware Requirements
-- Arduino board
-- Pololu Maestro servo controller
-- RC hobby servo (connected to channel 0)
+## Hardware Setup
 
-## Setup Instructions
+```mermaid
+graph LR
+    A[ESP32-S3<br>TX:GPIO17] --> B[Level<br>Shifter]
+    B --> C[Pololu<br>Maestro RX]
+```
 
-1. **Maestro Control Center Settings**
-   - Go to the Serial Settings tab and apply these settings:
-     - Serial mode: UART, fixed baud rate
-     - Baud rate: 9600
-     - CRC disabled
-   - Click "Apply Settings" after making changes
+### Power Configuration
+- LOW rail (3.3V): Provided by ESP32-S3
+- HIGH rail (5V): Using VUSB
+- Maestro Configuration: VSRV-VIN bridge in place to use VUSB (suitable for 2-3 servos)
 
-2. **Connections**
-   - Connect your Arduino to your Maestro following the wiring guide at:
-   - https://github.com/pololu/maestro-arduino
+### Demo
+![Servo Demo Setup](assets/maestroDemo.jpg)
 
 ## Features
-- Smooth servo control with adjustable speed and acceleration
-- Example movements demonstrating different speed and acceleration settings
-- Uses the PololuMaestro library for communication 
+- Control servos between 70-110 degrees
+- Demo mode ('d' key) with three patterns:
+  - Random positions
+  - Synchronized sweep
+  - Wave pattern
+- Configurable speed and acceleration
+- Serial monitoring (9600 baud)
+
+## Quick Start
+1. Configure Maestro Control Center:
+   - UART mode, fixed 9600 baud
+   - CRC disabled
+2. Connect ESP32-S3 GPIO17 to Maestro RX (via level shifter)
+3. Power up and enter:
+   - 'd' for demo mode
+   - 70-110 for specific angle 
